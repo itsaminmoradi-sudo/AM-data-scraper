@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AM Data Scraper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="w-96 bg-gray-100">
+
+    <div class="p-4">
+        <h1 class="text-2xl font-bold text-center text-gray-800">AM Data Scraper</h1>
+
+        <!-- Tabs -->
+        <div class="flex border-b mt-4">
+            <button id="scrape-tab-btn" class="flex-1 py-2 text-center font-semibold text-gray-600 bg-gray-200 rounded-t-lg focus:outline-none">Scrape</button>
+            <button id="media-tab-btn" class="flex-1 py-2 text-center font-semibold text-gray-600 focus:outline-none">Media</button>
+            <button id="export-tab-btn" class="flex-1 py-2 text-center font-semibold text-gray-600 focus:outline-none">Export</button>
+        </div>
+
+        <!-- Scrape Tab Content -->
+        <div id="scrape-tab-content" class="p-4">
+            <button id="scrape-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                Scrape Data
+            </button>
+        </div>
+
+        <!-- Media Tab Content (Hidden by default) -->
+        <div id="media-tab-content" class="hidden p-4">
+            <p>Media content will be displayed here.</p>
+        </div>
+
+        <!-- Export Tab Content (Hidden by default) -->
+        <div id="export-tab-content" class="hidden p-4">
+            <div class="flex justify-end space-x-2 mb-4">
+                <button id="download-csv-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Download CSV
+                </button>
+                <button id="download-pdf-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 11-2 0V4H6v12a1 1 0 11-2 0V4zm5 10a1 1 0 001.447.894l4-2A1 1 0 0015 11V9a1 1 0 00-1.553-.894l-4 2A1 1 0 009 11v3z" clip-rule="evenodd"></path></svg>
+                    Download PDF
+                </button>
+            </div>
+            <div class="overflow-y-auto h-64 border rounded">
+                <table id="preview-table" class="min-w-full bg-white">
+                    <thead class="bg-gray-800 text-white">
+                        <tr>
+                            <th class="py-2 px-4">Key</th>
+                            <th class="py-2 px-4">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="libs/jspdf.umd.min.js"></script>
+    <script src="libs/jspdf.plugin.autotable.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
